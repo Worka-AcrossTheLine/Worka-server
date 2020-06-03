@@ -95,12 +95,14 @@ WSGI_APPLICATION = "worka.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "worka",
+        "USER": "root",
+        "PASSWORD": "root",
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
