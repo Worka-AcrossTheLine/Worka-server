@@ -12,7 +12,7 @@ from django.contrib.auth.models import (
 )
 from django.utils import timezone
 
-username_length = MinLengthValidator(6, "유저명을 5글자 이상 입력해주세요")
+username_length = MinLengthValidator(5, "유저명을 5글자 이상 입력해주세요")
 
 
 class Company(models.Model):
