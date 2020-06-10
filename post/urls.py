@@ -19,5 +19,5 @@ urlpatterns = [
         name="manage-comment",
     ),
     path("like/<uuid:post_id>/", views.Like.as_view(), name="like"),
-    path("<uuid:post_id>/likers/", views.Likers.as_view(), name="get-likers"),
+    path("<uuid:post_id>/likers/", views.Likers.as_view(), name="likers"),
 ]
