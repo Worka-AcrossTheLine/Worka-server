@@ -1,4 +1,5 @@
 -r comm.txt
 
 black
-django-debug-toolbar
+django-debug-toolbarpip
+drf-yasg
