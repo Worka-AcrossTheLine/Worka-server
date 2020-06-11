@@ -37,7 +37,7 @@ class NewTagListSerializerField(TagListSerializerField):
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("username", "profile_img")
+        fields = ("username", "profile_pic")
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -45,13 +45,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ("id", "author", "text", "posted_on")
-        read_only_fields = ("author", "id", "posted_on")
+        fields = ("id", "author", "text", "created_at", "updated_at")
+        read_only_fields = ("author", "id", "created_at", "updated_at")
 
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
+
     author = AuthorSerializer(read_only=True)
-    image = serializers.ImageField(max_length=None, allow_empty_file=False)
+    images = serializers.ImageField(max_length=None, allow_empty_file=False)
     number_of_comments = serializers.SerializerMethodField()
     post_comments = serializers.SerializerMethodField("paginated_post_comments")
     liked_by_req_user = serializers.SerializerMethodField()
@@ -62,9 +63,10 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         fields = (
             "id",
             "author",
-            "image",
+            "images",
             "text",
-            "posted_on",
+            "created_at",
+            "updated_at",
             "number_of_likes",
             "number_of_comments",
             "post_comments",
@@ -76,14 +78,15 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         return Comment.objects.filter(post=obj).count()
 
     def paginated_post_comments(self, obj):
-        page_size = 5
+        page_size = 2
         paginator = Paginator(obj.post_comments.all(), page_size)
         page = self.context["request"].query_params.get("page") or 1
-        serializer = CommentSerializer(paginator.page(page), many=True)
+
+        post_comments = paginator.page(page)
+        serializer = CommentSerializer(post_comments, many=True)
 
         return serializer.data
 
-    # 내가 좋아요 찍은글을 식별 (예: 읽은 카드는 약간 흐릿하게보인다 등)
     def get_liked_by_req_user(self, obj):
         user = self.context["request"].user
         return user in obj.likes.all()

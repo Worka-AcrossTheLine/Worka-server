@@ -5,13 +5,11 @@ from post import views
 
 
 router = DefaultRouter()
-router.register("", views.PostViewSet)
-
-app_name = "post"
+router.register("", views.FeedViewSet)
 
 urlpatterns = [
-    path("", include(router.urls)),
-    path("feeds/", views.Feed.as_view(), name="feed"),
+    path("feed/", include(router.urls)),
+    path("all/", views.All.as_view(), name="all"),
     path("comment/<uuid:post_id>/", views.AddComment.as_view(), name="add-comment"),
     path(
         "comment/<int:comment_id>/",

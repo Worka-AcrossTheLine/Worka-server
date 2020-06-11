@@ -6,7 +6,7 @@ from .models import Post, Comment
 from .permissions import IsOwnerOrReadOnly
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class FeedViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().select_related("author").prefetch_related("likes")
     serializer_class = PostSerializer
     permission_classes = (IsOwnerOrReadOnly, permissions.IsAuthenticatedOrReadOnly)
@@ -14,6 +14,12 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
         return super().perform_create(serializer)
+
+    def get_queryset(self):
+        user = self.request.user
+        following_users = user.someting.all()  # user 모델 대입하세요
+        queryset = Post.objects.all().filter(author__in=following_users)
+        return queryset
 
 
 class AddComment(generics.CreateAPIView):
@@ -54,7 +60,7 @@ class Like(APIView):
 
             data = {"like": like}
 
-            return Response(data, status=status.HTTP_204_NO_CONTENT)
+            return Response(data, status=status.HTTP_200_OK)
         else:
             return Response(
                 {"err": "인증된 사용자만 접근가능"}, status=status.HTTP_401_UNAUTHORIZED
@@ -71,11 +77,7 @@ class Likers(generics.ListAPIView):
         return queryset
 
 
-class Feed(generics.ListAPIView):
+class All(generics.ListAPIView):
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
-
-    def get_queryset(self):
-        user = self.request.user
-        following_users = user.someting.all()  # user 모델 대입하세요
-        queryset = Post.objects.all().filter(author__in=following_users)
-        return queryset
+    permission_classes = (permissions.AllowAny,)
