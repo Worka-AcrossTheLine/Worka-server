@@ -55,3 +55,17 @@ class UserSerializer(serializers.ModelSerializer):
             "point",
             "mbti",
         ]
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = get_user_model()
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)
+
+
+class ChangeUsernameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = [
+            "username",
+        ]
