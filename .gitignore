@@ -216,4 +216,5 @@ fabric.properties
 
 .idea/
 secret.json
+celery_log
 # End of https://www.toptal.com/developers/gitignore/api/django,pycharm

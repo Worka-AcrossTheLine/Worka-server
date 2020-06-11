@@ -2,3 +2,4 @@
 
 black
 django-debug-toolbar
+drf-yasg
