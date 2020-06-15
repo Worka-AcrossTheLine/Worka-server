@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     # projects app
     "accounts",
     "post",
+    "question",
 ]
 
 MIDDLEWARE = [
@@ -101,9 +102,9 @@ WSGI_APPLICATION = "worka.wsgi.application"
 
 DATABASES = {
     # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    # }
+    #     #     "ENGINE": "django.db.backends.sqlite3",
+    #     #     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+    #     # }
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "worka",
@@ -167,7 +168,4 @@ JWT_AUTH = {
     "JWT_ALLOW_REFRESH": True,
     "JWT_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=28),
-
 }
-
-AUTH_USER_MODEL = "user.User"

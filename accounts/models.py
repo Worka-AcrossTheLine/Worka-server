@@ -5,9 +5,7 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
-    AbstractUser,
     PermissionsMixin,
-    AbstractUser,
     UserManager,
 )
 from django.utils import timezone
@@ -44,11 +42,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
         validators=[username_validator, username_length],
     )
-    birth_date = models.DateField(auto_now=False, blank=False, default=timezone.now())
+    birth_date = models.DateField(
+        auto_now=False, null=False, blank=False, default=timezone.now()
+    )
     point = models.PositiveIntegerField(default=30)
-    user_image = models.ImageField(blank=True, upload_to="accounts/image/%Y/%m/&d")
-    # follow_card = models.ManyToManyField(blank=True)
+    user_image = models.ImageField(blank=True, upload_to="accounts/userImage/%Y/%m/&d")
+    following = models.ManyToManyField("self", blank=True)
+    follower = models.ManyToManyField("self", blank=True)
     mbti = models.ForeignKey(Mbti, null=True, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
 
     is_mento = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -77,9 +79,3 @@ class User(AbstractBaseUser, PermissionsMixin):
             return today.year - self.birth_date.year - 1
         else:
             return today.year - self.birth_date.year
-
-
-class Mento(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
-    # questionaire = models.ForeignKey(blank=True)
