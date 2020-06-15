@@ -163,7 +163,7 @@ def login_view(request):
     if (username is None) or (password is None):
         raise exceptions.AuthenticationFailed("Required username and password")
 
-    user = get_user_model().objects.get(username=username)
+    user = get_object_or_404(get_user_model(), username=username)
     if user is None:
         raise exceptions.AuthenticationFailed("User not found")
     if not user.check_password(password):

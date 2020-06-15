@@ -298,6 +298,9 @@ class CommentViewSet(viewsets.ModelViewSet):
         if request.method == "POST":
             if comment.unlike_user_set.filter(pk=self.request.user.pk).exists():
                 return Response(status.HTTP_400_BAD_REQUEST)
+            elif comment.like_user_set.filter(pk=self.request.user.pk).exists():
+                comment.like_user_set.remove(self.request.user)
+                return Response(status.HTTP_204_NO_CONTENT)
             comment.like_user_set.add(self.request.user)
             return Response(status.HTTP_201_CREATED)
         else:
@@ -305,7 +308,7 @@ class CommentViewSet(viewsets.ModelViewSet):
             like_user = like_user.values()
             like_user_list = []
 
-            # TODO 리팩토링 필요
+            # TODO 리팩토링 필요 ex Serializer 이용
             for i in range(len(like_user)):
                 data = {}
                 data["id"] = like_user[i]["id"]
@@ -314,19 +317,17 @@ class CommentViewSet(viewsets.ModelViewSet):
                 like_user_list.append(data)
             return Response({"likes": like_user_list}, status=status.HTTP_200_OK)
 
-    @like.mapping.delete
-    def like_cancel(self, request, *args, **kwargs):
-        comment = self.get_object()
-        comment.like_user_set.remove(self.request.user)
-        return Response(status.HTTP_204_NO_CONTENT)
-
     @action(detail=True, methods=["GET", "POST"])
     def unlike(self, request, *args, **kwargs):
         comment = self.get_object()
+        user = self.request.user
 
         if request.method == "POST":
-            if comment.like_user_set.filter(pk=self.request.user.pk).exists():
+            if comment.like_user_set.filter(pk=user.pk).exists():
                 return Response(status.HTTP_400_BAD_REQUEST)
+            elif comment.unlike_user_set.filter(pk=user.pk).exists():
+                comment.unlike_user_set.remove(user)
+                return Response(status.HTTP_204_NO_CONTENT)
             comment.unlike_user_set.add(self.request.user)
             return Response(status.HTTP_201_CREATED)
         else:
@@ -342,12 +343,6 @@ class CommentViewSet(viewsets.ModelViewSet):
                 data["user_image"] = unlike_user[i]["user_image"]
                 unlike_user_list.append(data)
             return Response({"unlikes": unlike_user_list}, status=status.HTTP_200_OK)
-
-    @unlike.mapping.delete
-    def unlike_cancel(self, request, *args, **kwargs):
-        comment = self.get_object()
-        comment.unlike_user_set.remove(self.request.user)
-        return Response(status.HTTP_204_NO_CONTENT)
 
 
 class ProfilePageViewSet(PageViewSet):
