@@ -17,31 +17,44 @@ class FeedViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        following_users = user.someting.all()  # user 모델 대입하세요
+        following_users = user.following.all()  # user 모델 대입하세요
         queryset = Post.objects.all().filter(author__in=following_users)
         return queryset
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
 
-class AddComment(generics.CreateAPIView):
+
+class CommentView(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (
+        IsOwnerOrReadOnly,
+        permissions.IsAuthenticatedOrReadOnly,
+    )
 
-    def post(self, request, post_id=None):
-        post = Post.objects.get(pk=post_id)
-        serializer = CommentSerializer(data=request.data)
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+        return super().perform_create(serializer)
 
-        if serializer.is_valid():
-            serializer.save(post=post, author=self.request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def post(self, request, post_id=None):
+    #     post = Post.objects.get(pk=post_id)
+    #     serializer = CommentSerializer(data=request.data)
+    #
+    #     if serializer.is_valid():
+    #         serializer.save(post=post, author=self.request.user)
+    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    #     else:
+    #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ManageComment(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    lookup_url_kwarg = "comment_id"
-    permission_classes = (IsOwnerOrReadOnly,)
+# class ManageComment(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Comment.objects.all()
+#     serializer_class = CommentSerializer
+#     lookup_url_kwarg = "comment_id"
+#     permission_classes = (IsOwnerOrReadOnly,)
 
 
 class Like(APIView):
@@ -81,3 +94,8 @@ class All(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (permissions.AllowAny,)
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
