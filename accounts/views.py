@@ -6,9 +6,18 @@ from rest_framework_jwt.settings import api_settings
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import exceptions, status
-from rest_framework.generics import DestroyAPIView, get_object_or_404, UpdateAPIView
+from rest_framework.generics import (
+    DestroyAPIView,
+    get_object_or_404,
+    UpdateAPIView,
+    RetrieveAPIView,
+)
 from rest_framework.permissions import AllowAny
 
+from post.models import Post
+from post.serializers import PostSerializer
+from question.models import Page
+from question.serializers import PageSerializer
 from .models import Mbti
 from .serializers import (
     SignupSerializer,
@@ -19,6 +28,76 @@ from .serializers import (
 
 
 # Create your views here.
+class Profile(RetrieveAPIView):
+    """
+            # 질문지(page) API
+            ---
+            # Allow Method GET, POST
+            # /profile/{id}
+            ---
+            # response
+                - "user": {
+                        "pk": 1,
+                        "username": "admin",
+                        "user_image": null,
+                        "mento": 0,
+                        "mentiee": 0,
+                        "mbti": null,
+                        "is_me": true
+                    },
+                - "pages": [
+                        {
+                            "id": 2,
+                            "author": {
+                                "pk": 1,
+                                "username": "admin",
+                                "user_image": null
+                            },
+                            "title": "string",
+                            "tags": [
+                                "string"
+                            ],
+                            "questions": 0,
+                            "created_at": "2020-06-15T23:11:18.447558+09:00"
+                        },
+                    ]
+                    - "cards": [
+                        {
+                            "id": "2ffda24d-d27b-4728-930b-5de056838a11",
+                            "author": {
+                                "username": "admin",
+                                "user_image": null
+                            },
+                            "images": null,
+                            "text": "STRING",
+                            "created_at": "2020-06-16",
+                            "updated_at": "2020-06-16",
+                            "number_of_likes": 0,
+                            "number_of_comments": 0,
+                            "tags": [
+                                "STRING"
+                            ]
+                        }
+                    ]
+
+    """
+
+    queryset = get_user_model().objects.all()
+    serializer_class = UserSerializer
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        pages = Page.objects.filter(author_id=self.kwargs["pk"])
+        cards = Post.objects.filter(author_id=self.kwargs["pk"])
+        pages = PageSerializer(pages, many=True).data
+        cards = PostSerializer(cards, many=True).data
+        return Response({"user": serializer.data, "pages": pages, "cards": cards})
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
 
 
 @api_view(["POST"])
@@ -84,7 +163,7 @@ def login_view(request):
     if (username is None) or (password is None):
         raise exceptions.AuthenticationFailed("Required username and password")
 
-    user = get_user_model().objects.get(username=username)
+    user = get_object_or_404(get_user_model(), username=username)
     if user is None:
         raise exceptions.AuthenticationFailed("User not found")
     if not user.check_password(password):

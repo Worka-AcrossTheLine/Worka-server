@@ -7,10 +7,10 @@ from rest_framework import permissions
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/accounts/", include("accounts.urls")),
-    path('post/', include('post.urls')),
+    path("", include("accounts.urls")),
+    path("pages/", include("question.urls")),
+    path("post/", include("post.urls")),
 ]
-
 
 
 if settings.DEBUG:

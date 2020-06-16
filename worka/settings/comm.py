@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     # projects app
     "accounts",
     "post",
+    "question",
 ]
 
 MIDDLEWARE = [
@@ -167,7 +168,4 @@ JWT_AUTH = {
     "JWT_ALLOW_REFRESH": True,
     "JWT_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=28),
-
 }
-
-AUTH_USER_MODEL = "user.User"
