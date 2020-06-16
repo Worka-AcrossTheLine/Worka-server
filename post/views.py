@@ -17,7 +17,7 @@ class FeedViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user = self.request.user
-        following_users = user.someting.all()  # user 모델 대입하세요
+        following_users = user.following.all()  # user 모델 대입하세요
         queryset = Post.objects.all().filter(author__in=following_users)
         return queryset
 
