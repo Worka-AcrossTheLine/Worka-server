@@ -8,9 +8,8 @@ from rest_framework import permissions
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/accounts/", include("accounts.urls")),
-    path('post/', include('post.urls')),
+    path("api/v1/post/", include("post.urls")),
 ]
-
 
 
 if settings.DEBUG:
