@@ -37,7 +37,7 @@ class NewTagListSerializerField(TagListSerializerField):
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("username", "profile_pic")
+        fields = ("username", "user_image")
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -54,7 +54,7 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
     images = serializers.ImageField(max_length=None, allow_empty_file=False)
     number_of_comments = serializers.SerializerMethodField()
-    post_comments = serializers.SerializerMethodField("paginated_post_comments")
+    post_comments = serializers.SerializerMethodField()
     liked_by_req_user = serializers.SerializerMethodField()
     tags = NewTagListSerializerField()
 
@@ -63,6 +63,7 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         fields = (
             "id",
             "author",
+            "title",
             "images",
             "text",
             "created_at",
@@ -77,15 +78,8 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     def get_number_of_comments(self, obj):
         return Comment.objects.filter(post=obj).count()
 
-    def paginated_post_comments(self, obj):
-        page_size = 2
-        paginator = Paginator(obj.post_comments.all(), page_size)
-        page = self.context["request"].query_params.get("page") or 1
-
-        post_comments = paginator.page(page)
-        serializer = CommentSerializer(post_comments, many=True)
-
-        return serializer.data
+    def get_post_comments(self, obj):
+        return Comment.objects.filter(post=obj)
 
     def get_liked_by_req_user(self, obj):
         user = self.context["request"].user
