@@ -1,8 +1,8 @@
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
-from rest_framework_jwt.settings import api_settings
+
 
 User = get_user_model()
 
@@ -47,13 +47,31 @@ class SignupSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    mento = serializers.SerializerMethodField("mento_count")
+    mentiee = serializers.SerializerMethodField("mentiee_count")
+    is_me = serializers.SerializerMethodField("is_me_field")
+
+    def mento_count(self, user):
+        return user.following.count()
+
+    def mentiee_count(self, user):
+        return user.follower.count()
+
+    def is_me_field(self, obj):
+        if "request" in self.context:
+            user = self.context["request"].user
+            return user.pk == obj.pk
+
     class Meta:
         model = User
         fields = [
             "pk",
             "username",
-            "point",
+            "user_image",
+            "mento",
+            "mentiee",
             "mbti",
+            "is_me",
         ]
 
 
