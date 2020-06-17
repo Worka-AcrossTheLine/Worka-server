@@ -55,8 +55,14 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     images = serializers.ImageField(max_length=None, allow_empty_file=False)
     number_of_comments = serializers.SerializerMethodField()
     post_comments = serializers.SerializerMethodField()
-    liked_by_req_user = serializers.SerializerMethodField()
+    # liked_by_req_user = serializers.SerializerMethodField()
     tags = NewTagListSerializerField()
+    mento = serializers.SerializerMethodField("mento_field")
+
+    def mento_field(self, card):
+        if "request" in self.context:
+            user = self.context["request"].user
+            return card.author.follower.filter(pk=user.pk).exists()
 
     class Meta:
         model = Post
@@ -71,8 +77,9 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
             "number_of_likes",
             "number_of_comments",
             "post_comments",
-            "liked_by_req_user",
+            # "liked_by_req_user",
             "tags",
+            "mento",
         )
 
     def get_number_of_comments(self, obj):
@@ -81,6 +88,6 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     def get_post_comments(self, obj):
         return Comment.objects.filter(post=obj)
 
-    def get_liked_by_req_user(self, obj):
-        user = self.context["request"].user
-        return user in obj.likes.all()
+    # def get_liked_by_req_user(self, obj):
+    #     user = self.context["request"].user
+    #     return user in obj.likes.all()

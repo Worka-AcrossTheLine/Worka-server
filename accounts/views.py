@@ -108,19 +108,17 @@ def mento_user(request, *args, **kwargs):
 
     if request.method == "POST":
         if request_user != current_user:
-            if not current_user.following.filter(pk=request.user.pk).exists():
-                request_user.following.add(current_user)
+            if not current_user.follower.filter(pk=request_user.pk).exists():
                 current_user.follower.add(request_user)
                 return Response(status=status.HTTP_201_CREATED)
             else:
-                request_user.following.remove(current_user)
                 current_user.follower.remove(request_user)
                 return Response(status=status.HTTP_204_NO_CONTENT)
         return Response(status=status.HTTP_400_BAD_REQUEST)
     else:
-        if int(current_user.follower.count()) > 0:
-            follower = current_user.follower.all()
-            follower = FollowSerializer(follower).data
+        if int(current_user.follower.filter(pk=request_user.pk).count()) > 0:
+            follower = current_user.follower.filter(pk=request_user.pk)
+            follower = FollowSerializer(follower, many=True).data
             return Response({"mento": follower}, status=status.HTTP_200_OK)
         else:
             raise ValidationError("멘토가 존재하지 않습니다.")
@@ -130,10 +128,10 @@ def mento_user(request, *args, **kwargs):
 def mentiee_user(request, *args, **kwargs):
     current_user = get_user_model().objects.get(pk=kwargs["accounts_pk"])
 
-    if int(current_user.follower.count()) > 0:
-        follower = current_user.follower.all()
-        follower = FollowSerializer(follower).data
-        return Response({"mento": follower}, status=status.HTTP_200_OK)
+    if int(current_user.following.count()) > 0:
+        following = current_user.following.all()
+        following = FollowSerializer(following, many=True).data
+        return Response({"mentiee": following}, status=status.HTTP_200_OK)
     else:
         raise ValidationError("멘티가 존재하지 않습니다.")
 
