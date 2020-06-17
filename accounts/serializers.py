@@ -7,6 +7,16 @@ from rest_framework.exceptions import ValidationError
 User = get_user_model()
 
 
+class FollowSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "pk",
+            "username",
+            "user_image",
+        ]
+
+
 class SignupSerializer(serializers.ModelSerializer):
     queryset = ""
     password = serializers.CharField(write_only=True)
@@ -83,7 +93,7 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class ChangeUsernameSerializer(serializers.ModelSerializer):
     class Meta:
-        model = get_user_model()
+        model = User
         fields = [
             "username",
         ]
