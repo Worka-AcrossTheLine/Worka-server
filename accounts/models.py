@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     mbti = models.ForeignKey(Mbti, null=True, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
 
-    is_mento = models.BooleanField(default=False)
+    is_mento = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

@@ -24,6 +24,7 @@ from .serializers import (
     UserSerializer,
     ChangePasswordSerializer,
     ChangeUsernameSerializer,
+    FollowSerializer,
 )
 
 
@@ -98,6 +99,43 @@ class Profile(RetrieveAPIView):
         context = super().get_serializer_context()
         context["request"] = self.request
         return context
+
+
+@api_view(["GET", "POST"])
+def mento_user(request, *args, **kwargs):
+    current_user = get_user_model().objects.get(pk=kwargs["accounts_pk"])
+    request_user = get_user_model().objects.get(pk=request.user.pk)
+
+    if request.method == "POST":
+        if request_user != current_user:
+            if not current_user.following.filter(pk=request.user.pk).exists():
+                request_user.following.add(current_user)
+                current_user.follower.add(request_user)
+                return Response(status=status.HTTP_201_CREATED)
+            else:
+                request_user.following.remove(current_user)
+                current_user.follower.remove(request_user)
+                return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    else:
+        if int(current_user.follower.count()) > 0:
+            follower = current_user.follower.all()
+            follower = FollowSerializer(follower).data
+            return Response({"mento": follower}, status=status.HTTP_200_OK)
+        else:
+            raise ValidationError("멘토가 존재하지 않습니다.")
+
+
+@api_view(["GET"])
+def mentiee_user(request, *args, **kwargs):
+    current_user = get_user_model().objects.get(pk=kwargs["accounts_pk"])
+
+    if int(current_user.follower.count()) > 0:
+        follower = current_user.follower.all()
+        follower = FollowSerializer(follower).data
+        return Response({"mento": follower}, status=status.HTTP_200_OK)
+    else:
+        raise ValidationError("멘티가 존재하지 않습니다.")
 
 
 @api_view(["POST"])

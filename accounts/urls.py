@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 
 from . import views
@@ -22,6 +22,14 @@ router.register(
 
 urlpatterns = [
     path("profile/<int:pk>/", views.Profile.as_view()),
+    re_path(
+        r"profile/(?P<accounts_pk>\d+)/mento/", views.mento_user, name="user-mento"
+    ),
+    re_path(
+        r"profile/(?P<accounts_pk>\d+)/mentiee/",
+        views.mentiee_user,
+        name="user-mentiee",
+    ),
     path("", include(router.urls)),
     path("accounts/signup/", views.signup_view, name="signup"),
     path("accounts/login/", views.login_view, name="login"),
