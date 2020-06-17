@@ -12,6 +12,7 @@ from rest_framework.generics import (
 )
 from rest_framework.response import Response
 
+from accounts.models import Mbti
 from accounts.serializers import UserSerializer
 from post.models import Post
 from post.serializers import PostSerializer
@@ -93,6 +94,9 @@ class PageViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
+        mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+        user = get_user_model().objects.filter(mbti__in=mbti)
+        qs = qs.filter(author__in=user)
         return qs
 
     # TODO 질문지 3개 이상 작성 시 과금
@@ -113,6 +117,20 @@ class PageViewSet(viewsets.ModelViewSet):
             instance.delete()
         else:
             raise ValidationError("질문지 작성자만 질문을 삭제할 수 있습니다.")
+
+
+class ProfilePageViewSet(PageViewSet):
+    def get_queryset(self, *args, **kwargs):
+        qs = Page.objects.filter(author_id=self.kwargs["accounts_pk"])
+        return qs
+
+    # TODO 질문지 3개 이상 작성 시 과금
+    def perform_create(self, serializer):
+        if self.kwargs["accounts_pk"] == str(self.request.user.pk):
+            serializer.save(author=self.request.user)
+            return super().perform_create(serializer)
+        else:
+            raise ValidationError("현재 프로필 유저만 작성할 수 있습니다.")
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
@@ -343,18 +361,3 @@ class CommentViewSet(viewsets.ModelViewSet):
                 data["user_image"] = unlike_user[i]["user_image"]
                 unlike_user_list.append(data)
             return Response({"unlikes": unlike_user_list}, status=status.HTTP_200_OK)
-
-
-class ProfilePageViewSet(PageViewSet):
-    def get_queryset(self):
-        qs = super().get_queryset()
-        qs = qs.filter(author_id=self.request.user.pk)
-        return qs
-
-    # TODO 질문지 3개 이상 작성 시 과금
-    def perform_create(self, serializer):
-        if self.kwargs["accounts_pk"] == str(self.request.user.pk):
-            serializer.save(author=self.request.user)
-            return super().perform_create(serializer)
-        else:
-            raise ValidationError("현재 프로필 유저만 작성할 수 있습니다.")

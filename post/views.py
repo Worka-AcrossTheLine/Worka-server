@@ -1,10 +1,14 @@
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 from rest_framework import permissions, viewsets, generics, status
 from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter
+
+from accounts.models import Mbti
 from .serializers import PostSerializer, CommentSerializer, AuthorSerializer
 from .models import Post, Comment
 from .permissions import IsOwnerOrReadOnly
@@ -18,8 +22,6 @@ class FeedViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     # permission_classes = (IsOwnerOrReadOnly, permissions.IsAuthenticatedOrReadOnly)
 
-    # PostSerializer(context={"request": request})
-
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
         return super().perform_create(serializer)
@@ -29,11 +31,15 @@ class FeedViewSet(viewsets.ModelViewSet):
         context["request"] = self.request
         return context
 
-    # def get_queryset(self):
-    #     user = self.request.user
-    #     following_users = user.following.all()  # user 모델 대입하세요
-    #     queryset = Post.objects.all().filter(author__in=following_users)
-    #     return queryset
+    def get_queryset(self):
+        qs = super().get_queryset()
+        mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+        user = get_user_model().objects.filter(mbti__in=mbti)
+        qs = qs.filter(author__in=user)
+        # user = self.request.user
+        # following_users = user.following.all()  # user 모델 대입하세요
+        # queryset = Post.objects.all().filter(author__in=following_users)
+        return qs
 
     def get_object(self):
         pk = self.kwargs["pk"]
@@ -55,6 +61,19 @@ class FeedViewSet(viewsets.ModelViewSet):
                 return Response(status=status.HTTP_201_CREATED)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class ProfileFeed(FeedViewSet):
+    def get_queryset(self, *args, **kwargs):
+        qs = Post.objects.filter(author_id=self.kwargs["account_pk"])
+        return qs
+
+    def perform_create(self, serializer):
+        if self.kwargs["accounts_pk"] == str(self.request.user.pk):
+            serializer.save(author=self.request.user)
+            return super().perform_create(serializer)
+        else:
+            raise ValidationError("현재 프로필 유저만 작성할 수 있습니다.")
 
 
 class CommentView(viewsets.ModelViewSet):

@@ -1,0 +1,2787 @@
+[
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "인사과"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "경영팀"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "컨설턴"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "헤드헌터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "공인중개사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "관리자"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "바이어"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "재무상담사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "경제분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "벤처투자가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "경제학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "교수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "변리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "변호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "판사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "심리학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "외과의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTJ",
+      "job": "정신과의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "경영컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "제약회사 연구원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "회계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "시스템개발"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "컴퓨터보안"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "이공계교수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "인류학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "변호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "판사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "파일럿"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTJ",
+      "job": "변리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "발명가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "벤처사업가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "에이전트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "배우"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "가수"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "영화감독"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "연출"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "칼럼니스트"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "평론가"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "비평가"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "크리에이티브 디렉터"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "마케팅 관리자"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "그래픽 디자이너"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "카피라이터"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "정치인"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "정책담당자"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "정치평론가"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "사회학자"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "스카우터"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "범죄학자"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "교육 심리학자"
+    }
+  }
+  ,{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "투자 브로커"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "바이어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENTP",
+      "job": "전략기획 담당자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "경제학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "심리학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "변리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "경찰"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "벤처 투자자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "사업 컨설팅"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "물리학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "마케팅 분석"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "소프트웨어 엔지니어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "프로그래머"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "보안전문가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "빅데이터 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "사진작가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "비평가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "영화편집"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "아트 디렉터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "교수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "연구원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "천문학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "고고학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INTP",
+      "job": "수학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "크리에이티브 디렉터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "시나리오 작가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "싱어송라이터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "방송 프로듀서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "연예인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "홍보 컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "카피라이터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "아트 디렉터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "상담사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "주택 관리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "강사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "예체능 교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "이벤트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "마케팅"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "헤드헌터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFP",
+      "job": "상품 기획자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "예술가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "소설가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "시인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "저널리스트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "편집가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "음악가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "작곡가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "프로듀서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "목사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "사제"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "종교 교육자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "전도사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "대학교수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "연구원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "심리학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "상담사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "사회복지사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "사서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "특수교육 교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "영양사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "물리치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "미술치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFP",
+      "job": "헤드헌터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "경찰관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "소방관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "교도관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "공인중개사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "보험사기 조사관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "탐정"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "선장"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "군 장교"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "손해 사정사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "재무 상담사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "회계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "펀드 매니저"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "보험 설계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "투자 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "은행원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "스포츠 캐스터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "기자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "여행 가이드"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "경매사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "심판"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "트레이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "연예기획사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "사회자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "연기자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "건축 엔지니어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "요리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "바이어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "산업기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "빅데이터 전문가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "기업가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTP",
+      "job": "브로커"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "파일럿"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "카레이서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "소방관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "경찰관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "범죄학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "사진작가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "판매원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "바이어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "기관서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "증권 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "펀드 매니저"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "재무관리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "손해 사정사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "소프트웨어 개발자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "연구원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "네트워크 관리자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "토목 기술자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "방사선기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "응급 구조원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "항공기 정비사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "트레이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTP",
+      "job": "운동선수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "스포츠 에이전트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "코미디언"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "의상 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "일러스터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "사진작가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "작곡가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "영화배우"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "아이돌"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "MC"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "애니메이터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "아나운서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "뮤지컬배우"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "연극배우"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "무대 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "MD"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "마케터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "여행상품 기획자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "헤드헌터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "행사 기획자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "공인중개사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "파티 기획자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "승무원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "인테리어 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "헬스 트레이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "큐레이터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "토지 관리인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "놀이 치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "초등교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "보육교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "운동코치"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "재활 상담사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "특수교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFP",
+      "job": "체육교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "패션 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "보석 세공사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "음향 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "도예가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "화가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "무용수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "예술가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "만화가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "지질학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "고고학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "식물학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "동물학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "사육사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "수의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "천문학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "빅데이터 전문가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "물리치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "방사선 기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "치과의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "미술 치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "상담가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "약사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "조무사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "간호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "초등교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "보육교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "통역가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "기관사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "항공 관제사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "파일럿"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "카운셀러"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "법률비서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "사무원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "유치원교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "피부 관리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "사회복지사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFP",
+      "job": "작곡가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "관리자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "감독관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "예산 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "은행장"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "지배인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "협회 고문"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "정책 책임자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "보험설계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "군 장교"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "공무원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "보안요원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "경찰관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "기관사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "감정평가사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "감리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "판사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "검사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "변호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "임원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "교장"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "정보관리 책임자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "교수"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "회계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "변리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "시스템 관리자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "정치가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "전기기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "법률 보조원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESTJ",
+      "job": "교육 전문가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "감독관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "예산 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "자산관리사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "통계학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "바이어"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "고문"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "보험조사관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "CEO"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "물류매니저"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "보험 심사관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "감정 평가사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "공무원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "형사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "군 장교"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "교도관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "공인중개사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "보호 감찰관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "파일럿"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "세관 조사관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "판매원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "예산 분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "펀드매니저"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "주식중개인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "재무설계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "신용분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "은행감독"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "교장"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "사서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "법률연구원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "정비기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISTJ",
+      "job": "기상학자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "홍보책임자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "임원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "중간관리자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "대표"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "상품기확자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "호텔 지배인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "경영컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "승무원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "파티 기획자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "마케팅 책임자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "보험설계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "통역가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "여행컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "치과의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "간호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "수의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "물리치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "놀이치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "헬스 트레이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "피트니스 강사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "초등교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "운동코치"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "법원 서기"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ESFJ",
+      "job": "상담가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "치위생사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "간호사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "물리치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "수의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "정신과의사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "미술 치료사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "간호조무사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "방사선 기사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "유치원교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "사회복지사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "상담사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "보호감찰관"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "초등교사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "운동 트레이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "종교 교육자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "행정 보조원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "인사관리자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "신용상담가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "회계사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "MD"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "분석가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "법률 보조원"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "인테리어 디자이너"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "소매점 점장"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "사서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "음악가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ISFJ",
+      "job": "예술가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "아나운서"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "리포터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "동시 통역가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "방송 MC"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "정치인"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "홍보담당자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "마케팅 담당자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "심리상담가"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "취업 컨설턴트"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "헤드헌터"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "목사"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "성직자"
+    }
+  },
+  {
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "코치"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "교사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "사서"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "사회복지사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "언어교사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "아동복지사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "ENFJ",
+      "job": "CEO"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "직업 상담사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "교육 컨설턴트"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "특수교사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "재활상담사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "노인복지사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "상담치료사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "목사"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "심리학자"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "승려"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "시인"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "소설가"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "크리에이티브 디렉터"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "아트 디렉터"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "인테리어 디자이너"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "개발자"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "인사팀"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "마케팅 담당자"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "상품기획 MD"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "통역가"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "교육컨설팅"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "고객관리"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "컨설턴트"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "코치"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "프로젝트 관리"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "프리랜서 기획"
+    }
+  },{
+    "model": "accounts.mbti",
+    "fields": {
+      "title": "INFJ",
+      "job": "저널리스트"
+    }
+  }
+]
