@@ -25,6 +25,7 @@ from .serializers import (
     ChangePasswordSerializer,
     ChangeUsernameSerializer,
     FollowSerializer,
+    UserImageSerializer,
 )
 
 
@@ -308,6 +309,27 @@ class ChangeUsername(UpdateAPIView):
             if serializer.data.get("username") is None:
                 raise ValidationError("유저명을 입력해주세요")
             user.username = serializer.data.get("username")
+            user.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UpdateUserImage(UpdateAPIView):
+    model = get_user_model()
+    serializer_class = UserImageSerializer
+
+    def get_object(self, queryset=None):
+        user = self.request.user
+        return user
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+            if serializer.data.get("user_image") is None:
+                raise ValidationError("이미지를 등록해주세요")
+            user.username = serializer.data.get("user_image")
             user.save()
             return Response(status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

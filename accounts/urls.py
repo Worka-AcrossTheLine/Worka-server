@@ -47,4 +47,5 @@ urlpatterns = [
     path("accounts/username/", views.forgot_username_view, name="forgot-username"),
     path("accounts/password/", views.ChangePassword.as_view(), name="update-password",),
     path("accounts/username/", views.ChangeUsername.as_view(), name="update-username",),
+    path("accounts/image/", views.UpdateUserImage.as_view(), name="update-image",),
 ]
