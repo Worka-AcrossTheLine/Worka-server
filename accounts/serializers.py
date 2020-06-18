@@ -7,6 +7,11 @@ from rest_framework.exceptions import ValidationError
 User = get_user_model()
 
 
+class UserImageSerializer(serializers.Serializer):
+    model = User
+    user_image = serializers.ImageField(required=True)
+
+
 class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
