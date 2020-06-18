@@ -1,6 +1,7 @@
 from django.urls import path, include, re_path
 from rest_framework.routers import DefaultRouter
 
+from post.views import ProfileFeed, CommentView
 from . import views
 from question.views import ProfilePageViewSet, QuestionViewSet, CommentViewSet
 
@@ -19,9 +20,17 @@ router.register(
     CommentViewSet,
     basename="profile-comment",
 )
+router.register(
+    r"profile/(?P<accounts_pk>\d+)/feed", ProfileFeed, basename="profile-cards",
+)
+router.register(
+    r"profile/(?P<accounts_pk>\d+)/feed/(?P<post_pk>\d+)/comments",
+    CommentView,
+    basename="profile-comments",
+)
 
 urlpatterns = [
-    path("profile/<int:pk>/", views.Profile.as_view()),
+    path("profile/<int:pk>/", views.ProfilePage.as_view()),
     re_path(
         r"profile/(?P<accounts_pk>\d+)/mento/", views.mento_user, name="user-mento"
     ),

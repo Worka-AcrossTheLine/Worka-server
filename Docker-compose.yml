@@ -16,6 +16,7 @@ services:
              python manage.py makemigrations post &&
              python manage.py migrate post &&
              python manage.py migrate &&
+             python manage.py loaddata accounts/mbti.json &&
              python manage.py runserver 0.0.0.0:8000"
     depends_on:
       - db

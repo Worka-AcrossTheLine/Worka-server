@@ -27,7 +27,6 @@ class Page(TimestampedModel):
 class Question(TimestampedModel):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     page = models.ForeignKey(Page, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
     content = models.TextField()
 
     def __str__(self):

@@ -29,7 +29,7 @@ from .serializers import (
 
 
 # Create your views here.
-class Profile(RetrieveAPIView):
+class ProfilePage(RetrieveAPIView):
     """
             # 질문지(page) API
             ---
@@ -193,7 +193,7 @@ def login_view(request):
     """
     username = request.data.get("username")
     password = request.data.get("password")
-    mbti = request.data.get("mbti")
+
     response = Response()
 
     if (username is None) or (password is None):
@@ -237,8 +237,10 @@ def tendency_view(request):
 
     user = get_user_model().objects.get(pk=request.user.pk)
     mbti = Mbti.objects.filter(title=mbti).first()
+
     user.mbti = mbti
     user.save()
+
     return Response(status=status.HTTP_204_NO_CONTENT)
 
 

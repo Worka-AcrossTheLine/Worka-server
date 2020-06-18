@@ -70,7 +70,7 @@ class UserSerializer(serializers.ModelSerializer):
     def is_me_field(self, obj):
         if "request" in self.context:
             user = self.context["request"].user
-            return user.pk == obj.pk
+            return user == obj
 
     class Meta:
         model = User

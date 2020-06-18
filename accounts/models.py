@@ -20,7 +20,7 @@ class Company(models.Model):
 
 class Mbti(models.Model):
     title = models.CharField(max_length=4)
-    mbti_job = models.CharField(max_length=50)
+    job = models.CharField(max_length=50)
 
     def __str__(self):
         return self.title
@@ -53,6 +53,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     follower = models.ManyToManyField(
         "self", blank=True, related_name="following", symmetrical=False
     )
+    # mbti = models.ManyToManyField(Mbti, null=True)
     mbti = models.ForeignKey(Mbti, null=True, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
 
