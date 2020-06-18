@@ -19,6 +19,17 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
+class LinkTag(TimeStampedModel):
+    name = models.CharField(max_length=50)
+
+
+class Link(TimeStampedModel):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
+    tag = models.ManyToManyField(LinkTag, related_name="link_tag", blank=True)
+    url = models.URLField()
+
+
 class Post(TimeStampedModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)
