@@ -42,9 +42,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         ),
         validators=[username_validator, username_length],
     )
-    birth_date = models.DateField(
-        auto_now=False, null=False, blank=False, default=timezone.now()
-    )
+    # birth_date = models.DateField(
+    #     auto_now=False, null=False, blank=False, default=timezone.now()
+    # )
     point = models.PositiveIntegerField(default=30)
     user_image = models.ImageField(blank=True, upload_to="accounts/userImage/%Y/%m/&d")
     # following = models.ManyToManyField(

@@ -1,7 +1,9 @@
 from rest_framework import serializers
 import json
 import six
-from .models import Post, Comment
+
+from question.models import Tag
+from .models import Post, Comment, Link, LinkTag
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
@@ -37,7 +39,7 @@ class NewTagListSerializerField(TagListSerializerField):
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ("username", "user_image")
+        fields = ("pk", "username", "user_image")
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -91,3 +93,28 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     # def get_liked_by_req_user(self, obj):
     #     user = self.context["request"].user
     #     return user in obj.likes.all()
+
+
+class LinkSerializer(TaggitSerializer, serializers.ModelSerializer):
+    author = AuthorSerializer(read_only=True)
+    tag = serializers.SlugRelatedField(
+        many=True, slug_field="name", queryset=LinkTag.objects.all()
+    )
+    is_author = serializers.SerializerMethodField("is_author_field")
+
+    def is_author_field(self, obj):
+        if "request" in self.context:
+            user = self.context["request"].user
+            return obj.author == user
+
+    class Meta:
+        model = Link
+        fields = [
+            "pk",
+            "author",
+            "title",
+            "tag",
+            "url",
+            "is_author",
+            "created_at",
+        ]

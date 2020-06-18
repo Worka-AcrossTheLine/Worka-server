@@ -5,13 +5,16 @@ from post import views
 from post.views import TagView
 
 router = DefaultRouter()
-router.register("", views.FeedViewSet)
+router.register("feed", views.FeedViewSet)
 router.register(
     r"(?P<post_pk>\d+)/comments", views.CommentView, basename="comments",
 )
+router.register(
+    "links", views.LinkModelViewSet, basename="links",
+)
 
 urlpatterns = [
-    path("feed/", include(router.urls)),
+    path("", include(router.urls)),
     path("all/", views.All.as_view(), name="all"),
     path("tags/<slug>", views.TagView.as_view(), name="tag"),
     path("like/<uuid:post_id>/", views.Like.as_view(), name="like"),
