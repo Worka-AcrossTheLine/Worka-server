@@ -2,3 +2,7 @@ django~=3.0.0
 pillow
 djangorestframework
 django-cors-headers
+djangorestframework-jwt
+celery[redis]
+django-taggit
+django-taggit-serializer

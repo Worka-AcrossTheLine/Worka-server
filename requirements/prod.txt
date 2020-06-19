@@ -1,1 +1,6 @@
 -r comm.txt
+
+django-storages
+boto3
+gunicorn
+psycopg2-binary
