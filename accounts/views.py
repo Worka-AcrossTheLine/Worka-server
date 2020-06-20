@@ -145,6 +145,13 @@ def mentiee_user(request, *args, **kwargs):
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def tmp_password(request):
+    """
+        # 임시 비밀번호 이메일 전송
+            :param request:
+                - email: String
+                - username: String
+            :return: 201
+    """
     email = request.data.get("email")
     username = request.data.get("username")
 
