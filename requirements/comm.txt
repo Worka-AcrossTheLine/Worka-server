@@ -6,3 +6,4 @@ djangorestframework-jwt
 celery[redis]
 django-taggit
 django-taggit-serializer
+random-password-generator

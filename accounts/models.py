@@ -47,13 +47,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     # )
     point = models.PositiveIntegerField(default=30)
     user_image = models.ImageField(blank=True, upload_to="accounts/userImage/%Y/%m/&d")
-    # following = models.ManyToManyField(
-    #     "self", blank=True, related_name="follower", symmetrical=False
-    # )
     follower = models.ManyToManyField(
         "self", blank=True, related_name="following", symmetrical=False
     )
-    # mbti = models.ManyToManyField(Mbti, null=True)
+    comments = models.CharField(max_length=50, blank=True)
     mbti = models.ForeignKey(Mbti, null=True, on_delete=models.CASCADE)
     company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
 
