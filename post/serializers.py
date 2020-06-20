@@ -2,10 +2,8 @@ from rest_framework import serializers
 import json
 import six
 
-from question.models import Tag
 from .models import Post, Comment, Link, LinkTag
 from django.contrib.auth import get_user_model
-from django.core.paginator import Paginator
 from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 
 

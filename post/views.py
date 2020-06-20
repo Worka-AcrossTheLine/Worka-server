@@ -1,11 +1,12 @@
 from django.contrib.auth import get_user_model
-from rest_framework import permissions, viewsets, generics, status
+from rest_framework import viewsets, generics, status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
-from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter
+
+from cutompagination import MyPagination
 
 from accounts.models import Mbti
 from .serializers import (
@@ -14,21 +15,33 @@ from .serializers import (
     AuthorSerializer,
     LinkSerializer,
 )
-from .models import Post, Comment, Link, LinkTag
-from .permissions import IsOwnerOrReadOnly
-
-
-# from django_filters.rest_framework import DjangoFilterBackend
+from .models import Post, Link, LinkTag
 
 
 class FeedViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all().select_related("author").prefetch_related("likes")
     serializer_class = PostSerializer
-    # permission_classes = (IsOwnerOrReadOnly, permissions.IsAuthenticatedOrReadOnly)
+    pagination_class = MyPagination
+    filter_backends = [
+        SearchFilter,
+    ]
+    search_fields = ["title", "author__username", "tags__name"]
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
         return super().perform_create(serializer)
+
+    def perform_update(self, serializer):
+        card = self.get_object()
+        if card.author == self.request.user:
+            serializer.save()
+            return super().perform_update(serializer)
+
+    def perform_destroy(self, instance):
+        if instance.author == self.request.user:
+            instance.delete()
+        else:
+            raise ValidationError("카드 작성자만 질문을 삭제할 수 있습니다.")
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -37,12 +50,10 @@ class FeedViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-        user = get_user_model().objects.filter(mbti__in=mbti)
-        qs = qs.filter(author__in=user)
-        # user = self.request.user
-        # following_users = user.following.all()  # user 모델 대입하세요
-        # queryset = Post.objects.all().filter(author__in=following_users)
+        if self.request.user.mbti is not None:
+            mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+            user = get_user_model().objects.filter(mbti__in=mbti)
+            qs = qs.filter(author__in=user)
         return qs
 
     def get_object(self):
@@ -83,14 +94,25 @@ class ProfileFeed(FeedViewSet):
 class CommentView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = CommentSerializer
-    # permission_classes = (
-    #     IsOwnerOrReadOnly,
-    #     permissions.IsAuthenticatedOrReadOnly,
-    # )
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
         return super().perform_create(serializer)
+
+    def perform_update(self, serializer):
+        comment = self.get_object()
+        if comment.author == self.request.user:
+            serializer.save()
+            return super().perform_update(serializer)
+        else:
+            raise ValidationError("댓글 작성자만 질문을 수정할 수 있습니다.")
+
+    def perform_destroy(self, instance):
+        comment = self.get_object()
+        if instance.author == self.request.user or comment.author == self.request.user:
+            instance.delete()
+        else:
+            raise ValidationError("댓글 작성자 및 카드 작성자만 삭제할 수 있습니다.")
 
 
 class Like(APIView):
@@ -118,7 +140,6 @@ class Like(APIView):
 
 class Likers(generics.ListAPIView):
     serializer_class = AuthorSerializer
-    # permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         post_id = self.kwargs["post_id"]
@@ -129,7 +150,6 @@ class Likers(generics.ListAPIView):
 class All(generics.ListAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # permission_classes = (permissions.AllowAny,)
     filter_backends = [
         SearchFilter,
     ]
@@ -143,7 +163,6 @@ class All(generics.ListAPIView):
 
 class TagView(generics.ListAPIView):
     serializer_class = PostSerializer
-    # permission_classes = (permissions.AllowAny,)
 
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs.get("slug"))
@@ -250,7 +269,7 @@ class LinkModelViewSet(viewsets.ModelViewSet):
         if instance.author == self.request.user:
             instance.delete()
         else:
-            raise ValidationError("작성자가 아닙니다.")
+            raise ValidationError("작성자만 삭제할 수 있습니다.")
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
