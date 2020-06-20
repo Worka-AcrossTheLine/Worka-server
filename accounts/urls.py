@@ -43,8 +43,12 @@ urlpatterns = [
     path("accounts/signup/", views.signup_view, name="signup"),
     path("accounts/login/", views.login_view, name="login"),
     path("accounts/tendency/", views.tendency_view, name="tendency"),
+    path("accounts/tmp-password/", views.tmp_password, name="tmp-password"),
     path("accounts/delete/", views.DeleteUserView.as_view(), name="delete-user"),
-    path("accounts/username/", views.forgot_username_view, name="forgot-username"),
+    path(
+        "accounts/forgot-username/", views.forgot_username_view, name="forgot-username"
+    ),
+    path("accounts/comment/", views.UpateComment.as_view(), name="update-comment"),
     path("accounts/password/", views.ChangePassword.as_view(), name="update-password",),
     path("accounts/username/", views.ChangeUsername.as_view(), name="update-username",),
     path("accounts/image/", views.UpdateUserImage.as_view(), name="update-image",),

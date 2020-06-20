@@ -1,21 +1,17 @@
+from collections import OrderedDict
 from datetime import timedelta
 from django.contrib.auth import get_user_model
 from django.utils import timezone
 from rest_framework import viewsets, status
 from rest_framework.exceptions import ValidationError
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import SearchFilter
 from rest_framework.decorators import action
-from rest_framework.generics import (
-    get_object_or_404,
-    ListAPIView,
-    RetrieveAPIView,
-)
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
+from cutompagination import MyPagination
 
 from accounts.models import Mbti
-from accounts.serializers import UserSerializer
-from post.models import Post
-from post.serializers import PostSerializer
+
 from .models import Page, Question, Comments, Tag
 from .serializers import (
     PageSerializer,
@@ -79,6 +75,7 @@ class PageViewSet(viewsets.ModelViewSet):
         SearchFilter,
     ]
     search_fields = ["title", "author__username", "tags__name"]
+    pagination_class = MyPagination
 
     def create(self, request, *args, **kwargs):
         tag_names = request.data.get("tags", [])
@@ -94,10 +91,17 @@ class PageViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-        user = get_user_model().objects.filter(mbti__in=mbti)
-        qs = qs.filter(author__in=user)
+        if self.request.user.mbti is not None:
+            print("test")
+            mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+            user = get_user_model().objects.filter(mbti__in=mbti)
+            qs = qs.filter(author__in=user)
         return qs
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
 
     # TODO 질문지 3개 이상 작성 시 과금
     def perform_create(self, serializer):
@@ -172,6 +176,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
 
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+    pagination_class = MyPagination
 
     def get_queryset(self):
         qs = super().get_queryset()

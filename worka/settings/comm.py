@@ -40,11 +40,10 @@ def get_secret(setting, secret=secret):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "www.worka.co.kr",
-    "localhost",
     "127.0.0.1",
 ]
 
@@ -110,7 +109,7 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
     # "default": {
-    #     "ENGINE": "django.db.backends.postgresql",
+    #     "ENGINE": "django.db.backends.postgresql_psycopg2",
     #     "NAME": get_secret("DB_NAME"),
     #     "USER": get_secret("USER"),
     #     "PASSWORD": get_secret("PASSWORD"),
@@ -161,7 +160,7 @@ REST_FRAMEWORK = {
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ),
-    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 9,
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
@@ -173,3 +172,11 @@ JWT_AUTH = {
     "JWT_EXPIRATION_DELTA": timedelta(days=7),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=28),
 }
+
+SENDGRID_API_KEY = get_secret("SENDGRID_API_KEY")
+
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

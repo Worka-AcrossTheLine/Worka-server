@@ -26,7 +26,12 @@ from .serializers import (
     ChangeUsernameSerializer,
     FollowSerializer,
     UserImageSerializer,
+    UserCommentSerializer,
 )
+
+from password_generator import PasswordGenerator
+
+from .tasks import send_tmp_password
 
 
 # Create your views here.
@@ -139,6 +144,31 @@ def mentiee_user(request, *args, **kwargs):
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
+def tmp_password(request):
+    email = request.data.get("email")
+    username = request.data.get("username")
+
+    if (username is None) or (email is None):
+        raise exceptions.AuthenticationFailed("Required email and username")
+
+    user = get_object_or_404(get_user_model(), username=username, email=email)
+    if user is None:
+        raise exceptions.AuthenticationFailed("User not found")
+
+    pwd = PasswordGenerator()
+    new_pwd = pwd.generate()
+
+    user.set_password(new_pwd)
+    user.save()
+
+    send_tmp_password.delay(user.email, user.username, new_pwd)
+    print(user.email)
+
+    return Response(status=status.HTTP_200_OK)
+
+
+@api_view(["POST"])
+@permission_classes([AllowAny])
 def signup_view(request):
     """
             유저 회원가입 API
@@ -159,9 +189,9 @@ def signup_view(request):
         token = jwt_encode_handler(payload)
 
         data["token"] = token
+        data["pk"] = user.pk
         data["username"] = user.username
         data["mbti"] = user.mbti
-        data["point"] = user.point
         return Response(data, status=status.HTTP_201_CREATED,)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -236,7 +266,7 @@ def tendency_view(request):
     if mbti is None:
         raise ValidationError("mbti 값을 넣어주세요")
 
-    user = get_user_model().objects.get(pk=request.user.pk)
+    user = get_object_or_404(get_user_model(), pk=request.user.pk)
     mbti = Mbti.objects.filter(title=mbti).first()
 
     user.mbti = mbti
@@ -327,9 +357,32 @@ class UpdateUserImage(UpdateAPIView):
         serializer = self.get_serializer(data=request.data)
 
         if serializer.is_valid():
-            if serializer.data.get("user_image") is None:
+            user_image = serializer.data.get("user_image")
+            if user_image is None:
                 raise ValidationError("이미지를 등록해주세요")
-            user.username = serializer.data.get("user_image")
+            user.user_image = user_image
+            user.save()
+            return Response(status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UpateComment(UpdateAPIView):
+    model = get_user_model()
+    serializer_class = UserCommentSerializer
+
+    def get_object(self, queryset=None):
+        user = self.request.user
+        return user
+
+    def update(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+
+        if serializer.is_valid():
+            comment = serializer.data.get("comment")
+            if comment is None:
+                raise ValidationError("Comment를 작성해주세요")
+            user.comments = comment
             user.save()
             return Response(status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
