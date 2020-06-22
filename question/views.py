@@ -1,7 +1,3 @@
-from collections import OrderedDict
-from datetime import timedelta
-from django.contrib.auth import get_user_model
-from django.utils import timezone
 from rest_framework import viewsets, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.filters import SearchFilter
@@ -91,11 +87,10 @@ class PageViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        if self.request.user.mbti is not None:
-            print("test")
-            mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-            user = get_user_model().objects.filter(mbti__in=mbti)
-            qs = qs.filter(author__in=user)
+        # if self.request.user.mbti is not None:
+        #     mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+        #     user = get_user_model().objects.filter(mbti__in=mbti)
+        #     qs = qs.filter(author__in=user)
         return qs
 
     def get_serializer_context(self):
@@ -280,10 +275,10 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     # TODO Comment 좋아요 싫어요 적용될 시 보여질지 말지 고민 듕
     def get_queryset(self):
-        timesince = timezone.now() - timedelta(days=3)
+        # timesince = timezone.now() - timedelta(days=3)
         qs = super().get_queryset()
         qs = qs.filter(question__pk=self.kwargs["question_pk"])
-        qs = qs.filter(created_at__gte=timesince)
+        # qs = qs.filter(created_at__gte=timesince)
         return qs
 
     def perform_create(self, serializer):
@@ -317,14 +312,15 @@ class CommentViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["GET", "POST"])
     def like(self, request, *args, **kwargs):
         comment = self.get_object()
+        user = self.request.user
 
         if request.method == "POST":
-            if comment.unlike_user_set.filter(pk=self.request.user.pk).exists():
-                return Response(status.HTTP_400_BAD_REQUEST)
-            elif comment.like_user_set.filter(pk=self.request.user.pk).exists():
-                comment.like_user_set.remove(self.request.user)
+            if comment.unlike_user_set.filter(pk=user.pk).exists():
+                comment.unlike_user_set.remove(user)
+            elif comment.like_user_set.filter(pk=user.pk).exists():
+                comment.like_user_set.remove(user)
                 return Response(status.HTTP_204_NO_CONTENT)
-            comment.like_user_set.add(self.request.user)
+            comment.like_user_set.add(user)
             return Response(status.HTTP_201_CREATED)
         else:
             like_user = comment.like_user_set.all()
@@ -347,11 +343,11 @@ class CommentViewSet(viewsets.ModelViewSet):
 
         if request.method == "POST":
             if comment.like_user_set.filter(pk=user.pk).exists():
-                return Response(status.HTTP_400_BAD_REQUEST)
+                comment.like_user_set.remove(user)
             elif comment.unlike_user_set.filter(pk=user.pk).exists():
                 comment.unlike_user_set.remove(user)
                 return Response(status.HTTP_204_NO_CONTENT)
-            comment.unlike_user_set.add(self.request.user)
+            comment.unlike_user_set.add(user)
             return Response(status.HTTP_201_CREATED)
         else:
             unlike_user = comment.unlike_user_set.all()

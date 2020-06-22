@@ -1,5 +1,3 @@
-from datetime import date, timedelta, datetime
-
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework_jwt.settings import api_settings
