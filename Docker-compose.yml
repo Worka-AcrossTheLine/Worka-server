@@ -14,12 +14,4 @@ services:
     volumes:
       - .:/worka
     command: >
-      sh -c "python manage.py makemigrations accounts &&
-             python manage.py migrate accounts &&
-             python manage.py makemigrations question &&
-             python manage.py migrate question &&
-             python manage.py makemigrations post &&
-             python manage.py migrate post &&
-             python manage.py migrate &&
-             python manage.py loaddata accounts/mbti.json &&
-             python manage.py runserver 0.0.0.0:8000"
+      sh -c "gunicorn --bind 0.0.0.0:8000 --workers 3 worka.wsgi:application -e DJANGO_SETTINGS_MODULE=worka.settings.prod"

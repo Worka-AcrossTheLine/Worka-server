@@ -2,7 +2,6 @@ import os
 from abc import ABC
 from tempfile import SpooledTemporaryFile
 
-from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
@@ -39,7 +38,7 @@ class CustomS3Boto3Storage(S3Boto3Storage, ABC):
 
 
 class MediaStorage(CustomS3Boto3Storage):
-    location = settings.MEDIAFILES_LOCATION
+    location = "media"
     file_overwrite = False
 
 

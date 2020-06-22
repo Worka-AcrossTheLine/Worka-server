@@ -8,7 +8,6 @@ from django.contrib.auth.models import (
     PermissionsMixin,
     UserManager,
 )
-from django.utils import timezone
 
 username_length = MinLengthValidator(5, "유저명을 5글자 이상 입력해주세요")
 

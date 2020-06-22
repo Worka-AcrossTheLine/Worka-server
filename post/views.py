@@ -50,10 +50,11 @@ class FeedViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        if self.request.user.mbti is not None:
-            mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-            user = get_user_model().objects.filter(mbti__in=mbti)
-            qs = qs.filter(author__in=user)
+        # 추후 업데이트 예정
+        # if self.request.user.mbti is not None:
+        #     mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+        #     user = get_user_model().objects.filter(mbti__in=mbti)
+        #     qs = qs.filter(author__in=user)
         return qs
 
     def get_object(self):
@@ -247,9 +248,10 @@ class LinkModelViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
-        mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-        user = get_user_model().objects.filter(mbti__in=mbti)
-        qs = qs.filter(author__in=user)
+        # if self.request.user.mbti is None:
+        #     mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+        #     user = get_user_model().objects.filter(mbti__in=mbti)
+        #     qs = qs.filter(author__in=user)
         return qs
 
     def perform_create(self, serializer):
