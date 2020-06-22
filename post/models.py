@@ -46,7 +46,7 @@ class Post(TimeStampedModel):
     tags = TaggableManager(through=UUIDTaggedItem)
 
     class Meta:
-        ordering = ["-created_at"]
+        ordering = ["-id"]
 
     def number_of_likes(self):
         if self.likes.count():

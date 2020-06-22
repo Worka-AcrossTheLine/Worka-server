@@ -1,5 +1,3 @@
-from datetime import date, timedelta, datetime
-
 from django.contrib.auth import get_user_model
 from rest_framework.exceptions import ValidationError
 from rest_framework_jwt.settings import api_settings
@@ -145,6 +143,13 @@ def mentiee_user(request, *args, **kwargs):
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def tmp_password(request):
+    """
+        # 임시 비밀번호 이메일 전송
+            :param request:
+                - email: String
+                - username: String
+            :return: 201
+    """
     email = request.data.get("email")
     username = request.data.get("username")
 
