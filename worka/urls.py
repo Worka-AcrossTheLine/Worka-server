@@ -6,7 +6,8 @@ from rest_framework import permissions
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path("admin/", include("admin_honeypot.urls", namespace="admin_honeypot")),
+    path("adminworka/", admin.site.urls),
     path("", include("accounts.urls")),
     path("pages/", include("question.urls")),
     path("post/", include("post.urls")),
