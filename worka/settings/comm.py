@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "taggit",
     "taggit_serializer",
+    "admin_honeypot",
     # projects app
     "accounts",
     "post",
