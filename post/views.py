@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from rest_framework import viewsets, generics, status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
@@ -11,11 +10,10 @@ from cutompagination import MyPagination
 from accounts.models import Mbti
 from .serializers import (
     PostSerializer,
-    CommentSerializer,
     AuthorSerializer,
     LinkSerializer,
 )
-from .models import Post, Link, LinkTag
+from .models import Post, Link, LinkTag, PostTag
 
 
 class FeedViewSet(viewsets.ModelViewSet):
@@ -26,6 +24,18 @@ class FeedViewSet(viewsets.ModelViewSet):
         SearchFilter,
     ]
     search_fields = ["title", "author__username", "tags__name"]
+
+    def create(self, request, *args, **kwargs):
+        tag_names = request.data.get("tags", [])
+        for tag_name in tag_names:
+            PostTag.objects.get_or_create(name=tag_name)
+        return super().create(request, *args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        tag_names = request.data.get("tags", [])
+        for tag_name in tag_names:
+            PostTag.objects.get_or_create(name=tag_name)
+        return super().update(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -57,10 +67,10 @@ class FeedViewSet(viewsets.ModelViewSet):
         #     qs = qs.filter(author__in=user)
         return qs
 
-    def get_object(self):
-        pk = self.kwargs["pk"]
-        post = Post.objects.get(pk=pk)
-        return post
+    # def get_object(self):
+    #     pk = self.kwargs["pk"]
+    #     post = Post.objects.get(pk=pk)
+    #     return post
 
     @action(detail=True, methods=["POST"])
     def mento(self, *args, **kwargs):
@@ -90,30 +100,6 @@ class ProfileFeed(FeedViewSet):
             return super().perform_create(serializer)
         else:
             raise ValidationError("현재 프로필 유저만 작성할 수 있습니다.")
-
-
-class CommentView(viewsets.ModelViewSet):
-    queryset = Post.objects.all()
-    serializer_class = CommentSerializer
-
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-        return super().perform_create(serializer)
-
-    def perform_update(self, serializer):
-        comment = self.get_object()
-        if comment.author == self.request.user:
-            serializer.save()
-            return super().perform_update(serializer)
-        else:
-            raise ValidationError("댓글 작성자만 질문을 수정할 수 있습니다.")
-
-    def perform_destroy(self, instance):
-        comment = self.get_object()
-        if instance.author == self.request.user or comment.author == self.request.user:
-            instance.delete()
-        else:
-            raise ValidationError("댓글 작성자 및 카드 작성자만 삭제할 수 있습니다.")
 
 
 class Like(APIView):
@@ -146,32 +132,6 @@ class Likers(generics.ListAPIView):
         post_id = self.kwargs["post_id"]
         queryset = Post.objects.get(pk=post_id).likes.all()
         return queryset
-
-
-class All(generics.ListAPIView):
-    queryset = Post.objects.all()
-    serializer_class = PostSerializer
-    filter_backends = [
-        SearchFilter,
-    ]
-    search_fields = ["title", "author__username", "tags__name"]
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context["request"] = self.request
-        return context
-
-
-class TagView(generics.ListAPIView):
-    serializer_class = PostSerializer
-
-    def get_queryset(self):
-        return Post.objects.filter(tags__slug=self.kwargs.get("slug"))
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context["request"] = self.request
-        return context
 
 
 class LinkModelViewSet(viewsets.ModelViewSet):
