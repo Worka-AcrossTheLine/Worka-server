@@ -40,7 +40,7 @@ def get_secret(setting, secret=secret):
 SECRET_KEY = get_secret("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "www.worka.co.kr",
@@ -60,8 +60,6 @@ INSTALLED_APPS = [
     # third party
     "rest_framework",
     "corsheaders",
-    "taggit",
-    "taggit_serializer",
     "admin_honeypot",
     # projects app
     "accounts",
