@@ -13,8 +13,16 @@ class UserCommentSerializer(UserUpdateSerializer):
     comment = serializers.CharField(required=True)
 
 
-class UserImageSerializer(UserUpdateSerializer):
-    user_image = serializers.ImageField(required=True)
+class UserImageSerializer(serializers.ModelSerializer):
+    user_image = serializers.ImageField(max_length=None, allow_empty_file=False)
+
+    class Meta:
+        model = User
+        fields = [
+            "pk",
+            "username",
+            "user_image",
+        ]
 
 
 class ChangePasswordSerializer(UserUpdateSerializer):

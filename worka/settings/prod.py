@@ -1,4 +1,14 @@
 from .comm import *
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+    dsn="https://db6cb9cce81b4963a9db5802b721e0a5@o412444.ingest.sentry.io/5289205",
+    integrations=[DjangoIntegration()],
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)
 
 with open("secret.json") as f:
     secret = json.loads(f.read())
