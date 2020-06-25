@@ -357,18 +357,13 @@ class UpdateUserImage(UpdateAPIView):
         user = self.request.user
         return user
 
-    def update(self, request, *args, **kwargs):
+    def perform_update(self, serializer):
         user = self.get_object()
-        serializer = self.get_serializer(data=request.data)
-
-        if serializer.is_valid():
-            user_image = serializer.data.get("user_image")
-            if user_image is None:
-                raise ValidationError("이미지를 등록해주세요")
-            user.user_image = user_image
-            user.save()
-            return Response(status=status.HTTP_200_OK)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if user == self.request.user:
+            serializer.save()
+            return super().perform_update(serializer)
+        else:
+            raise ValidationError("자신 이미지만 수정 가능합니다")
 
 
 class UpateComment(UpdateAPIView):
