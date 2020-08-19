@@ -31,63 +31,14 @@ from password_generator import PasswordGenerator
 
 from .tasks import send_tmp_password
 
+User = get_user_model()
 
 # Create your views here.
 class ProfilePage(RetrieveAPIView):
     """
-            # 질문지(page) API
-            ---
-            # Allow Method GET, POST
-            # /profile/{id}
-            ---
-            # response
-                - "user": {
-                        "pk": 1,
-                        "username": "admin",
-                        "user_image": null,
-                        "mento": 0,
-                        "mentiee": 0,
-                        "mbti": null,
-                        "is_me": true
-                    },
-                - "pages": [
-                        {
-                            "id": 2,
-                            "author": {
-                                "pk": 1,
-                                "username": "admin",
-                                "user_image": null
-                            },
-                            "title": "string",
-                            "tags": [
-                                "string"
-                            ],
-                            "questions": 0,
-                            "created_at": "2020-06-15T23:11:18.447558+09:00"
-                        },
-                    ]
-                    - "cards": [
-                        {
-                            "id": "2ffda24d-d27b-4728-930b-5de056838a11",
-                            "author": {
-                                "username": "admin",
-                                "user_image": null
-                            },
-                            "images": null,
-                            "text": "STRING",
-                            "created_at": "2020-06-16",
-                            "updated_at": "2020-06-16",
-                            "number_of_likes": 0,
-                            "number_of_comments": 0,
-                            "tags": [
-                                "STRING"
-                            ]
-                        }
-                    ]
-
+    프로필 페이지
     """
-
-    queryset = get_user_model().objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def retrieve(self, request, *args, **kwargs):
@@ -107,8 +58,8 @@ class ProfilePage(RetrieveAPIView):
 
 @api_view(["GET", "POST"])
 def mento_user(request, *args, **kwargs):
-    current_user = get_user_model().objects.get(pk=kwargs["accounts_pk"])
-    request_user = get_user_model().objects.get(pk=request.user.pk)
+    current_user = User.objects.get(pk=kwargs["accounts_pk"])
+    request_user = User.objects.get(pk=request.user.pk)
 
     if request.method == "POST":
         if request_user != current_user:
@@ -130,7 +81,7 @@ def mento_user(request, *args, **kwargs):
 
 @api_view(["GET"])
 def mentiee_user(request, *args, **kwargs):
-    current_user = get_user_model().objects.get(pk=kwargs["accounts_pk"])
+    current_user = User.objects.get(pk=kwargs["accounts_pk"])
 
     if int(current_user.following.count()) > 0:
         following = current_user.following.all()
@@ -156,7 +107,7 @@ def tmp_password(request):
     if (username is None) or (email is None):
         raise exceptions.AuthenticationFailed("Required email and username")
 
-    user = get_object_or_404(get_user_model(), username=username, email=email)
+    user = get_object_or_404(User, username=username, email=email)
     if user is None:
         raise exceptions.AuthenticationFailed("User not found")
 
@@ -167,7 +118,6 @@ def tmp_password(request):
     user.save()
 
     send_tmp_password.delay(user.email, user.username, new_pwd)
-    print(user.email)
 
     return Response(status=status.HTTP_200_OK)
 
@@ -177,12 +127,6 @@ def tmp_password(request):
 def signup_view(request):
     """
             유저 회원가입 API
-            ---
-            # 내용
-                - email : "STRING"
-                - username : "STRING"
-                - password : "STRING"
-                - birth_date : "YYYY-mm-dd"
     """
     serializer = SignupSerializer(data=request.data)
     data = {}
@@ -205,16 +149,14 @@ def signup_view(request):
 class DeleteUserView(DestroyAPIView):
     """
         유저 삭제 API
-        ---
-        # JWT 토큰값만 보내주심 되용
     """
 
-    model = get_user_model()
-    queryset = get_user_model().objects.all()
+    model = User
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def get_object(self):
-        return get_user_model().objects.get(id=self.request.user.id)
+        return User.objects.get(id=self.request.user.id)
 
 
 @api_view(["POST"])
@@ -235,7 +177,7 @@ def login_view(request):
     if (username is None) or (password is None):
         raise exceptions.AuthenticationFailed("Required username and password")
 
-    user = get_object_or_404(get_user_model(), username=username)
+    user = get_object_or_404(User, username=username)
     if user is None:
         raise exceptions.AuthenticationFailed("User not found")
     if not user.check_password(password):
@@ -260,10 +202,7 @@ def login_view(request):
 @api_view(["PATCH"])
 def tendency_view(request):
     """
-            유저 mbti 업데이 API(JWT 필요)
-            ---
-            # 내용트
-                - mbti : "STRING"
+            유저 mbti 업데이 API
     """
 
     mbti = request.data.get("mbti")
@@ -271,7 +210,7 @@ def tendency_view(request):
     if mbti is None:
         raise ValidationError("mbti 값을 넣어주세요")
 
-    user = get_object_or_404(get_user_model(), pk=request.user.pk)
+    user = get_object_or_404(User, pk=request.user.pk)
     mbti = Mbti.objects.filter(title=mbti).first()
 
     user.mbti = mbti
@@ -285,16 +224,13 @@ def tendency_view(request):
 def forgot_username_view(request):
     """
             유저 이름보여주는 API
-            ---
-            # 내용
-                - email : "STRING"
     """
     email = request.data.get("email")
 
     if email is None:
         raise ValidationError("올바른 Email 값을 넣어주세요")
 
-    user = get_object_or_404(get_user_model(), email=email)
+    user = get_object_or_404(User, email=email)
     username = UserSerializer(user).data["username"]
 
     if len(username) <= 8:
@@ -305,7 +241,7 @@ def forgot_username_view(request):
 
 
 class ChangePassword(UpdateAPIView):
-    model = get_user_model()
+    model = User
     serializer_class = ChangePasswordSerializer
 
     def get_object(self, queryset=None):
@@ -329,7 +265,7 @@ class ChangePassword(UpdateAPIView):
 
 
 class ChangeUsername(UpdateAPIView):
-    model = get_user_model()
+    model = User
     serializer_class = ChangeUsernameSerializer
 
     def get_object(self, queryset=None):
@@ -350,7 +286,7 @@ class ChangeUsername(UpdateAPIView):
 
 
 class UpdateUserImage(UpdateAPIView):
-    model = get_user_model()
+    model = User
     serializer_class = UserImageSerializer
 
     def get_object(self, queryset=None):
@@ -367,7 +303,7 @@ class UpdateUserImage(UpdateAPIView):
 
 
 class UpateComment(UpdateAPIView):
-    model = get_user_model()
+    model = User
     serializer_class = UserCommentSerializer
 
     def get_object(self, queryset=None):
