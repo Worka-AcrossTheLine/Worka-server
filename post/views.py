@@ -9,7 +9,6 @@ from cutompagination import MyPagination
 
 from .serializers import (
     PostSerializer,
-    AuthorSerializer,
     LinkSerializer,
 )
 from .models import Post, Link, LinkTag, PostTag
