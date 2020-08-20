@@ -1,16 +1,13 @@
-from rest_framework import viewsets, generics, status
+from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from rest_framework.filters import SearchFilter
 
 from cutompagination import MyPagination
 
-from accounts.models import Mbti
 from .serializers import (
     PostSerializer,
-    AuthorSerializer,
     LinkSerializer,
 )
 from .models import Post, Link, LinkTag, PostTag
@@ -67,11 +64,6 @@ class FeedViewSet(viewsets.ModelViewSet):
         #     qs = qs.filter(author__in=user)
         return qs
 
-    # def get_object(self):
-    #     pk = self.kwargs["pk"]
-    #     post = Post.objects.get(pk=pk)
-    #     return post
-
     @action(detail=True, methods=["POST"])
     def mento(self, *args, **kwargs):
         card = self.get_object()
@@ -100,38 +92,6 @@ class ProfileFeed(FeedViewSet):
             return super().perform_create(serializer)
         else:
             raise ValidationError("현재 프로필 유저만 작성할 수 있습니다.")
-
-
-class Like(APIView):
-    queryset = Post.objects.all()
-
-    def get(self, request, format=None, post_id=None):
-        post = Post.objects.get(pk=post_id)
-        user = self.request.user
-        if user.is_authenticated:
-            if user in post.likes.all():
-                post.likes.remove(user)
-                like = False
-            else:
-                post.likes.add(user)
-                like = True
-
-            data = {"like": like}
-
-            return Response(data, status=status.HTTP_200_OK)
-        else:
-            return Response(
-                {"err": "인증된 사용자만 접근가능"}, status=status.HTTP_401_UNAUTHORIZED
-            )
-
-
-class Likers(generics.ListAPIView):
-    serializer_class = AuthorSerializer
-
-    def get_queryset(self):
-        post_id = self.kwargs["post_id"]
-        queryset = Post.objects.get(pk=post_id).likes.all()
-        return queryset
 
 
 class LinkModelViewSet(viewsets.ModelViewSet):
@@ -208,6 +168,7 @@ class LinkModelViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         qs = super().get_queryset()
+        # 추후 업데이트 예정
         # if self.request.user.mbti is None:
         #     mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
         #     user = get_user_model().objects.filter(mbti__in=mbti)
