@@ -21,7 +21,6 @@ class Company(models.Model):
         db_table = "company"
 
 
-
 class Mbti(models.Model):
     title = models.CharField(max_length=4)
     job = models.CharField(max_length=50)
