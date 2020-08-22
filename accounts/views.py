@@ -24,7 +24,7 @@ from .serializers import (
     ChangeUsernameSerializer,
     FollowSerializer,
     UserImageSerializer,
-    UserCommentSerializer,
+    UserDescriptionSerializer,
 )
 
 from password_generator import PasswordGenerator
@@ -38,6 +38,7 @@ class ProfilePage(RetrieveAPIView):
     """
     프로필 페이지
     """
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
@@ -302,9 +303,9 @@ class UpdateUserImage(UpdateAPIView):
             raise ValidationError("자신 이미지만 수정 가능합니다")
 
 
-class UpateComment(UpdateAPIView):
+class UpdateDecsription(UpdateAPIView):
     model = User
-    serializer_class = UserCommentSerializer
+    serializer_class = UserDescriptionSerializer
 
     def get_object(self, queryset=None):
         user = self.request.user
