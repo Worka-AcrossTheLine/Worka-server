@@ -43,7 +43,11 @@ urlpatterns = [
     path(
         "accounts/forgot-username/", views.forgot_username_view, name="forgot-username"
     ),
-    path("accounts/comment/", views.UpateComment.as_view(), name="update-comment"),
+    path(
+        "accounts/comment/",
+        views.UpdateDecsription.as_view(),
+        name="update-description",
+    ),
     path("accounts/password/", views.ChangePassword.as_view(), name="update-password",),
     path("accounts/username/", views.ChangeUsername.as_view(), name="update-username",),
     path("accounts/image/", views.UpdateUserImage.as_view(), name="update-image",),

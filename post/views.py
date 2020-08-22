@@ -6,10 +6,7 @@ from rest_framework.filters import SearchFilter
 
 from cutompagination import MyPagination
 
-from .serializers import (
-    PostSerializer,
-    LinkSerializer,
-)
+from .serializers import PostSerializer
 from .models import Post, PostTag
 
 
@@ -55,14 +52,14 @@ class FeedViewSet(viewsets.ModelViewSet):
         context["request"] = self.request
         return context
 
-    def get_queryset(self):
-        qs = super().get_queryset()
-        # 추후 업데이트 예정
-        # if self.request.user.mbti is not None:
-        #     mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
-        #     user = get_user_model().objects.filter(mbti__in=mbti)
-        #     qs = qs.filter(author__in=user)
-        return qs
+    # def get_queryset(self):
+    #     qs = super().get_queryset()
+    #     # 추후 업데이트 예정
+    #     if self.request.user.mbti is not None:
+    #         mbti = Mbti.objects.filter(title=self.request.user.mbti.title)
+    #         user = get_user_model().objects.filter(mbti__in=mbti)
+    #         qs = qs.filter(author__in=user)
+    #     return qs
 
     @action(detail=True, methods=["POST"])
     def mento(self, *args, **kwargs):

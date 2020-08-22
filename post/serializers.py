@@ -1,12 +1,14 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from .models import Post, Link, LinkTag, PostTag
-from django.contrib.auth import get_user_model
+from .models import Post, PostTag
+
+User = get_user_model()
 
 
-class AuthorSerializer(serializers.ModelSerializer):
+class AuthorSerializers(serializers.ModelSerializer):
     class Meta:
-        model = get_user_model()
+        model = User
         fields = [
             "pk",
             "username",
@@ -15,7 +17,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(read_only=True)
+    author = AuthorSerializers(read_only=True)
     images = serializers.ImageField(max_length=None, allow_empty_file=False)
     tags = serializers.SlugRelatedField(
         many=True, slug_field="name", queryset=PostTag.objects.all()
