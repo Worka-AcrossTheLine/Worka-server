@@ -11,7 +11,7 @@ class TimeStampedModel(models.Model):
 
 
 class PostTag(TimeStampedModel):
-    name = models.CharField(max_length=13, unique=True, primary_key=True)
+    name = models.CharField(max_length=13, unique=True, primary_key=True, db_index=True)
 
     def __str__(self):
         return self.name
