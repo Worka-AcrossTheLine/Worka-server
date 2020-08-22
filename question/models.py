@@ -21,6 +21,7 @@ class Page(TimestampedModel):
         return self.title
 
     class Meta:
+        db_table = "db_pages"
         ordering = ["-id"]
 
 
@@ -33,6 +34,7 @@ class Question(TimestampedModel):
         return self.title
 
     class Meta:
+        db_table = "db_questions"
         ordering = ["id"]
 
 
@@ -55,6 +57,7 @@ class Comments(TimestampedModel):
         return f"{self.author}님이 작성한 댓글 {self.text}입니다."
 
     class Meta:
+        db_table = "db_question_comments"
         ordering = ["id"]
 
 
@@ -63,3 +66,6 @@ class Tag(TimestampedModel):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        db_table = "db_question_tags"
