@@ -141,7 +141,6 @@ def signup_view(request):
         data["token"] = token
         data["pk"] = user.pk
         data["username"] = user.username
-        data["mbti"] = user.mbti
         return Response(data, status=status.HTTP_201_CREATED,)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
