@@ -53,7 +53,6 @@ class FollowSerializer(serializers.ModelSerializer):
 class SignupSerializer(serializers.ModelSerializer):
     queryset = ""
     password = serializers.CharField(write_only=True)
-    mbti = serializers.CharField(read_only=True)
 
     def save(self, **kwargs):
         user = User.objects.create(
@@ -75,7 +74,6 @@ class SignupSerializer(serializers.ModelSerializer):
             "email",
             "username",
             "password",
-            "mbti",
         ]
 
 
