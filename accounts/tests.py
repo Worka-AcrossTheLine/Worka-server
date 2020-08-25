@@ -15,4 +15,10 @@ class AccountsTestCase(APITestCase):
         }
 
         response = self.client.post("/accounts/signup/", data=data)
+        self.assertTrue(response.data["token"])
+        self.assertTrue(response.data["pk"])
+        self.assertTrue(response.data["username"])
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_login(self):
+        pass
