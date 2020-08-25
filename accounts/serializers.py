@@ -9,13 +9,23 @@ class UserUpdateSerializer(serializers.Serializer):
     model = User
 
 
-class UserCommentSerializer(UserUpdateSerializer):
-    comment = serializers.CharField(required=True)
+class UserDescriptionSerializer(UserUpdateSerializer):
+    description = serializers.CharField(required=True)
 
 
 class UserImageSerializer(serializers.ModelSerializer):
     user_image = serializers.ImageField(max_length=None, allow_empty_file=False)
 
+    class Meta:
+        model = User
+        fields = [
+            "pk",
+            "username",
+            "user_image",
+        ]
+
+
+class AuthorSerializers(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
@@ -93,7 +103,7 @@ class UserSerializer(serializers.ModelSerializer):
             "mento",
             "mentiee",
             "mbti",
-            "comments",
+            "description",
         ]
 
 

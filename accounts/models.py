@@ -10,18 +10,6 @@ from django.contrib.auth.models import (
 username_length_validator = MinLengthValidator(5, "유저명을 5글자 이상 입력해주세요")
 
 
-class Company(models.Model):
-    name = models.CharField(max_length=50)
-    image = models.ImageField(upload_to="company")
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        db_table = "company"
-
-
-
 class Mbti(models.Model):
     title = models.CharField(max_length=4)
     job = models.CharField(max_length=50)
@@ -54,7 +42,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
     description = models.CharField(max_length=50, blank=True)
     mbti = models.ForeignKey(Mbti, null=True, on_delete=models.CASCADE)
-    company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
     is_mento = models.BooleanField(default=True)

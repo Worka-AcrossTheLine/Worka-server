@@ -10,19 +10,8 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-class LinkTag(TimeStampedModel):
-    name = models.CharField(max_length=50)
-
-
-class Link(TimeStampedModel):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    tag = models.ManyToManyField(LinkTag, related_name="link_tag", blank=True)
-    url = models.URLField()
-
-
 class PostTag(TimeStampedModel):
-    name = models.CharField(max_length=13, unique=True, primary_key=True)
+    name = models.CharField(max_length=13, unique=True, primary_key=True, db_index=True)
 
     def __str__(self):
         return self.name
@@ -41,15 +30,10 @@ class Post(TimeStampedModel):
     tags = models.ManyToManyField(PostTag, blank=True)
 
     class Meta:
+        db_table = "post"
         ordering = [
             "-id",
         ]
 
-    def number_of_likes(self):
-        if self.likes.count():
-            return self.likes.count()
-        else:
-            return 0
-
     def __str__(self):
-        return f"{self.author}'s post"
+        return f"{self.author}'의 게시글입니다."

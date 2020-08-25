@@ -1,13 +1,10 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import LinkModelViewSet, FeedViewSet
+from .views import FeedViewSet
 
 router = DefaultRouter()
-router.register("feed", FeedViewSet)
-router.register(
-    "links", LinkModelViewSet, basename="links",
-)
+router.register("", FeedViewSet, basename="feed")
 
 urlpatterns = [
     path("", include(router.urls)),
