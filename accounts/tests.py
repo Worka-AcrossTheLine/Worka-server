@@ -38,3 +38,19 @@ class AccountsTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("token", response.data)
         self.assertIn("user", response.data)
+
+    def test_forgot_username(self):
+        create_user()
+
+        response = self.client.post(
+            "/accounts/forgot-username/", data={"email": "wrongemail@test.com"}
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        response = self.client.post(
+            "/accounts/forgot-username/", data={"email": "testcase@test.com"}
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn("username", response.data)
+        self.assertIn("***", response.data.get("username", ""))
