@@ -54,3 +54,25 @@ class AccountsTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertIn("username", response.data)
         self.assertIn("***", response.data.get("username", ""))
+
+    def test_tendency(self):
+        data = {
+            "username": "testcase",
+            "password": "strong_password",
+        }
+
+        create_user()
+        user = self.client.post("/accounts/login/", data=data)
+        token = user.data["token"]
+
+        response = self.client.patch(
+            "/accounts/tendency/",
+            data={"mbti": "ENFJ"},
+            HTTP_AUTHORIZATION="JWT " + token,
+        )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        response = self.client.patch(
+            "/accounts/tendency/", data={}, HTTP_AUTHORIZATION="JWT " + token
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
