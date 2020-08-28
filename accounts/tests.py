@@ -68,14 +68,7 @@ class AccountsTestCase(APITestCase):
         self.assertIn("***", response.data.get("username", ""))
 
     def test_tendency(self):
-        data = {
-            "username": "testcase",
-            "password": "strong_password",
-        }
-
-        create_user()
-        user = self.client.post("/accounts/login/", data=data)
-        token = user.data["token"]
+        token = self.login_user()
 
         response = self.client.patch(
             "/accounts/tendency/",
