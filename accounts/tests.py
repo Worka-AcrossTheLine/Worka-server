@@ -13,6 +13,18 @@ def create_user():
 
 
 class AccountsTestCase(APITestCase):
+    def login_user(self):
+        data = {
+            "username": "testcase",
+            "password": "strong_password",
+        }
+
+        create_user()
+        user = self.client.post("/accounts/login/", data=data)
+        token = user.data["token"]
+
+        return token
+
     def test_signup(self):
         data = {
             "username": "testcase",
@@ -74,5 +86,27 @@ class AccountsTestCase(APITestCase):
 
         response = self.client.patch(
             "/accounts/tendency/", data={}, HTTP_AUTHORIZATION="JWT " + token
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_change_passwword(self):
+        token = self.login_user()
+
+        data = {
+            "old_password": "strong_password",
+            "new_password": "new_strong_password",
+        }
+
+        response = self.client.patch(
+            "/accounts/password/", data=data, HTTP_AUTHORIZATION="JWT " + token
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        data = {
+            "old_password": "wrong_password",
+            "new_password": "new_strong_password",
+        }
+        response = self.client.patch(
+            "/accounts/password/", data=data, HTTP_AUTHORIZATION="JWT " + token
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
