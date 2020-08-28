@@ -103,3 +103,20 @@ class AccountsTestCase(APITestCase):
             "/accounts/password/", data=data, HTTP_AUTHORIZATION="JWT " + token
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_change_username(self):
+        token = self.login_user()
+
+        response = self.client.patch(
+            "/accounts/username/",
+            data={"username": "invalid_+username"},
+            HTTP_AUTHORIZATION="JWT " + token,
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+        response = self.client.patch(
+            "/accounts/username/",
+            data={"username": "newUsername"},
+            HTTP_AUTHORIZATION="JWT " + token,
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
