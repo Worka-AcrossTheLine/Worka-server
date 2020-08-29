@@ -120,3 +120,18 @@ class AccountsTestCase(APITestCase):
             HTTP_AUTHORIZATION="JWT " + token,
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_change_user_description(self):
+        token = self.login_user()
+
+        response = self.client.patch(
+            "/accounts/comment/",
+            data={"comment": "new description"},
+            HTTP_AUTHORIZATION="JWT " + token,
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response = self.client.patch(
+            "/accounts/comment/", data={}, HTTP_AUTHORIZATION="JWT " + token,
+        )
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
