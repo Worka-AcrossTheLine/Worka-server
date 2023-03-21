@@ -4,4 +4,4 @@ django-storages
 boto3
 gunicorn
 psycopg2-binary
-sentry-sdk==0.15.1
+sentry-sdk==1.14.0
